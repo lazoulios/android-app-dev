@@ -1,5 +1,5 @@
 # android-app-dev
- App development for uni.
+ App development for uni using Android Studio.
 
 Authors:  
 Georgios Lazaridis AEM: 4419  
