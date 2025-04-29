@@ -1,0 +1,109 @@
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/add_car_drawer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Coordinator for AppBar + content -->
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/add_car_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#F8F1FF"
+            android:title="@string/add_car"
+            app:titleCentered="true"
+            app:navigationIcon="@drawable/ic_menu" />
+
+        <!-- Confirm FAB -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:minHeight="48dp"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <EditText
+                    android:id="@+id/inputCarName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/car_name"
+                    android:minHeight="48dp" />
+
+                <EditText
+                    android:id="@+id/inputDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/description"
+                    android:minHeight="48dp" />
+
+                <EditText
+                    android:id="@+id/inputMake"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/make"
+                    android:minHeight="48dp" />
+
+                <EditText
+                    android:id="@+id/inputModel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/model"
+                    android:minHeight="48dp" />
+
+                <EditText
+                    android:id="@+id/inputEngine"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/engine_displacement_cc"
+                    android:inputType="number"
+                    android:minHeight="48dp" />
+
+                <Spinner
+                    android:id="@+id/spinnerGas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="48dp" />
+
+                <Spinner
+                    android:id="@+id/spinnerDistanceUnit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="48dp" />
+
+                <Spinner
+                    android:id="@+id/spinnerVolumeUnit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="48dp" />
+
+                <Spinner
+                    android:id="@+id/spinnerConsumptionUnit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="48dp" />
+            </LinearLayout>
+        </ScrollView>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/saveCarButton"
+            android:layout_width="63dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:backgroundTint="#F8F1FF"
+            android:icon="@drawable/ic_check"
+            android:contentDescription="@string/save_car" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>
