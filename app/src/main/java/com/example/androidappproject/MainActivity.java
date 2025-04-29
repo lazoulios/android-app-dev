@@ -107,6 +107,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    protected void onResume() {
+        super.onResume();
+        loadCars(); // Reload cars when coming back
+    }
+
     private void loadCars() {
         List<Car> carList = dbHelper.getAllCars();
 

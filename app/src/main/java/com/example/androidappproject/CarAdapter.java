@@ -1,5 +1,7 @@
 package com.example.androidappproject;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +30,20 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
         Car car = carList.get(position);
         holder.textViewName.setText(car.name);
         holder.textViewDetails.setText(car.make + " " + car.model + " (" + car.engineDisplacement + "cc)");
+        holder.itemView.setOnClickListener(v -> {
+            Context context = v.getContext();
+            Intent intent = new Intent(context, CarDetailsActivity.class);
+            intent.putExtra("name", car.name);
+            intent.putExtra("description", car.description);
+            intent.putExtra("make", car.make);
+            intent.putExtra("model", car.model);
+            intent.putExtra("engine", car.engineDisplacement);
+            intent.putExtra("gasType", car.gasType);
+            intent.putExtra("distanceUnit", car.distanceUnit);
+            intent.putExtra("volumeUnit", car.volumeUnit);
+            intent.putExtra("consumptionUnit", car.consumptionUnit);
+            context.startActivity(intent);
+        });
     }
 
     @Override

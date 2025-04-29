@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/details_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:title="Car Details"
+        android:titleTextColor="@android:color/white"
+        app:navigationIcon="@drawable/ic_menu" />
+
+    <TextView android:id="@+id/textCarName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Car Name"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"/>
+
+    <TextView android:id="@+id/textCarDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description"
+        android:layout_marginTop="8dp"/>
+
+    <TextView android:id="@+id/textCarMake"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Make"
+        android:layout_marginTop="8dp"/>
+
+    <TextView android:id="@+id/textCarModel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Model"
+        android:layout_marginTop="8dp"/>
+
+    <TextView android:id="@+id/textCarEngine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Engine"
+        android:layout_marginTop="8dp"/>
+
+    <TextView android:id="@+id/textCarGas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gas Type"
+        android:layout_marginTop="8dp"/>
+
+    <TextView android:id="@+id/textCarDistance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Distance Unit"
+        android:layout_marginTop="8dp"/>
+
+    <TextView android:id="@+id/textCarVolume"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Volume Unit"
+        android:layout_marginTop="8dp"/>
+
+    <TextView android:id="@+id/textCarConsumption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Consumption Unit"
+        android:layout_marginTop="8dp"/>
+</LinearLayout>
