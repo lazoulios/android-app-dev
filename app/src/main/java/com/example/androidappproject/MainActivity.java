@@ -42,13 +42,6 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        // Handle window insets (safe area for gestures)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-
         // Find Views
         drawerLayout = findViewById(R.id.drawer_layout);
         toolbar = findViewById(R.id.toolbar);
@@ -103,7 +96,18 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 drawerLayout.closeDrawers();
                 Toast.makeText(MainActivity.this, "Compare selected", Toast.LENGTH_SHORT).show();
-                // TODO: Go to Compare screen
+                Intent intent = new Intent(MainActivity.this, ComparisonsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        ExtendedFloatingActionButton addCarButton = findViewById(R.id.add_car_button); // Make sure the ID matches your XML
+
+        addCarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AddCarActivity.class);
+                startActivity(intent);
             }
         });
     }

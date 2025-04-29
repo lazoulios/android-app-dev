@@ -2,7 +2,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
     <!-- Coordinator for AppBar + content -->
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -103,10 +104,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="16dp"
-            android:backgroundTint="#F8F1FF"
+            android:backgroundTint="#FFF1F5FF"
             android:icon="@drawable/ic_check"
             android:contentDescription="@string/save_car"
-            android:titleTextColor="@color/black"/>
+            android:titleTextColor="@color/black"
+            app:iconTint="@color/black"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
@@ -115,7 +117,8 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@android:color/white">
+        android:background="@android:color/white"
+        android:fitsSystemWindows="true">
 
 
         <include layout="@layout/custom_drawer_content" />
