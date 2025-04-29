@@ -26,10 +26,13 @@ public class AddCarActivity extends AppCompatActivity {
 
     private Spinner spinnerGas, spinnerDistanceUnit, spinnerVolumeUnit, spinnerConsumptionUnit;
     private EditText inputCarName, inputDescription, inputMake, inputModel, inputEngine;
+
     private MaterialToolbar toolbar;
     private DrawerLayout drawerLayout;
     private LinearLayout navHome, navAddCar, navCompare;
     private NavigationView navView;
+    private CarDatabaseHelper dbHelper;  // Add database helper
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,13 +100,10 @@ public class AddCarActivity extends AppCompatActivity {
         spinnerConsumptionUnit = findViewById(R.id.spinnerConsumptionUnit);
 
         setupSpinners();
+        dbHelper = new CarDatabaseHelper(this);
 
         ExtendedFloatingActionButton saveButton = findViewById(R.id.saveCarButton);
-        saveButton.setOnClickListener(v -> {
-            // Validate & Save
-            Toast.makeText(this, "Car Saved!", Toast.LENGTH_SHORT).show();
-            finish();
-        });
+        saveButton.setOnClickListener(v -> saveCar());
     }
 
     private void setupSpinners() {
@@ -116,6 +116,44 @@ public class AddCarActivity extends AppCompatActivity {
         spinnerDistanceUnit.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, distOptions));
         spinnerVolumeUnit.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, volOptions));
         spinnerConsumptionUnit.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, consOptions));
+    }
+
+    private void saveCar() {
+        try {
+            // Collect input values
+            String carName = inputCarName.getText().toString().trim();
+            String description = inputDescription.getText().toString().trim();
+            String make = inputMake.getText().toString().trim();
+            String model = inputModel.getText().toString().trim();
+            String engineText = inputEngine.getText().toString().trim();
+
+            // Validate
+            if (carName.isEmpty() || make.isEmpty() || model.isEmpty() || engineText.isEmpty()) {
+                Toast.makeText(this, "Please fill in all required fields.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            int engineDisplacement = Integer.parseInt(engineText);
+            String gasType = spinnerGas.getSelectedItem().toString();
+            String distanceUnit = spinnerDistanceUnit.getSelectedItem().toString();
+            String volumeUnit = spinnerVolumeUnit.getSelectedItem().toString();
+            String consumptionUnit = spinnerConsumptionUnit.getSelectedItem().toString();
+
+            // Create Car object
+            Car newCar = new Car(carName, description, make, model, engineDisplacement,
+                    gasType, distanceUnit, volumeUnit, consumptionUnit);
+
+            // Insert into database
+            dbHelper.insertCar(newCar);
+
+            Toast.makeText(this, "Car Saved!", Toast.LENGTH_SHORT).show();
+            finish();  // Close the activity after saving
+
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, "Engine displacement must be a number.", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Toast.makeText(this, "Error saving car: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
 }
 

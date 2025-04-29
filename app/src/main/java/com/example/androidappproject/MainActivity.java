@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -14,8 +15,14 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,6 +30,11 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private NavigationView navView;
     private LinearLayout navHome, navAddCar, navCompare;
+
+    private TextView emptyMessage;
+    private RecyclerView recyclerViewCars;
+    private CarDatabaseHelper dbHelper;
+    private CarAdapter carAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         toolbar = findViewById(R.id.toolbar);
         navView = findViewById(R.id.nav_view);
+        emptyMessage = findViewById(R.id.empty_message);
+        recyclerViewCars = findViewById(R.id.recyclerViewCars);
 
         // Setup Toolbar
         setSupportActionBar(toolbar);
@@ -53,6 +67,11 @@ public class MainActivity extends AppCompatActivity {
         );
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+
+        dbHelper = new CarDatabaseHelper(this);
+        recyclerViewCars.setLayoutManager(new LinearLayoutManager(this));
+
+        loadCars();
 
         // Find custom drawer items
         navHome = navView.findViewById(R.id.nav_home);
@@ -87,5 +106,19 @@ public class MainActivity extends AppCompatActivity {
                 // TODO: Go to Compare screen
             }
         });
+    }
+    private void loadCars() {
+        List<Car> carList = dbHelper.getAllCars();
+
+        if (carList.isEmpty()) {
+            emptyMessage.setVisibility(View.VISIBLE);
+            recyclerViewCars.setVisibility(View.GONE);
+        } else {
+            emptyMessage.setVisibility(View.GONE);
+            recyclerViewCars.setVisibility(View.VISIBLE);
+
+            carAdapter = new CarAdapter(carList);
+            recyclerViewCars.setAdapter(carAdapter);
+        }
     }
 }
