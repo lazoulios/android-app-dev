@@ -76,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Add Car selected", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this, AddCarActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
 
