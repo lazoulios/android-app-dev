@@ -39,12 +39,6 @@ public class AddCarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_car_screen);
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-
         // Find views
         drawerLayout = findViewById(R.id.drawer_layout);
         toolbar = findViewById(R.id.toolbar);
@@ -84,7 +78,8 @@ public class AddCarActivity extends AppCompatActivity {
         navCompare.setOnClickListener(v -> {
             drawerLayout.closeDrawers();
             Toast.makeText(AddCarActivity.this, "Compare selected", Toast.LENGTH_SHORT).show();
-            // TODO: Start CompareActivity when you make it
+            Intent intent = new Intent(AddCarActivity.this, ComparisonsActivity.class);
+            startActivity(intent);
         });
 
 
