@@ -1,5 +1,6 @@
 package com.example.androidappproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -73,7 +74,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 drawerLayout.closeDrawers();
                 Toast.makeText(MainActivity.this, "Add Car selected", Toast.LENGTH_SHORT).show();
-                // TODO: Go to Add Car screen
+                Intent intent = new Intent(MainActivity.this, AddCarActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 
