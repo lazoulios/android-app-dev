@@ -103,7 +103,8 @@
             android:layout_margin="16dp"
             android:backgroundTint="#F8F1FF"
             android:icon="@drawable/ic_check"
-            android:contentDescription="@string/save_car" />
+            android:contentDescription="@string/save_car"
+            android:titleTextColor="@color/black"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>
