@@ -12,7 +12,7 @@ import java.util.List;
 public class CarDatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "cars.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     public static final String TABLE_CARS = "cars";
 
@@ -26,6 +26,26 @@ public class CarDatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_DISTANCE_UNIT = "distance_unit";
     public static final String COLUMN_VOLUME_UNIT = "volume_unit";
     public static final String COLUMN_CONSUMPTION_UNIT = "consumption_unit";
+
+    private static final String TABLE_TRIPS = "trips";
+
+    private static final String COLUMN_TRIP_ID = "_id";
+    private static final String COLUMN_CAR_ID = "car_id"; // FK to cars._id
+    private static final String COLUMN_DATE = "date"; // (optional)
+    private static final String COLUMN_DISTANCE = "distance"; // e.g. km
+    private static final String COLUMN_VOLUME = "volume";     // e.g. liters
+    private static final String COLUMN_COST = "cost";         // (optional)
+
+    private static final String CREATE_TRIPS_TABLE =
+            "CREATE TABLE " + TABLE_TRIPS + " (" +
+                    COLUMN_TRIP_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    COLUMN_CAR_ID + " INTEGER, " +
+                    COLUMN_DATE + " TEXT, " +
+                    COLUMN_DISTANCE + " REAL, " +
+                    COLUMN_VOLUME + " REAL, " +
+                    COLUMN_COST + " REAL, " +
+                    "FOREIGN KEY(" + COLUMN_CAR_ID + ") REFERENCES " + TABLE_CARS + "(" + COLUMN_ID + ")" +
+                    ");";
 
     private static final String TABLE_CREATE =
             "CREATE TABLE " + TABLE_CARS + " (" +
@@ -48,13 +68,14 @@ public class CarDatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(TABLE_CREATE);
+        db.execSQL(CREATE_TRIPS_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // For now just drop and recreate if upgrading
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_CARS);
-        onCreate(db);
+        if (oldVersion < 2) {
+            db.execSQL(CREATE_TRIPS_TABLE);  // add new table without touching car data
+        }
     }
 
     public void insertCar(Car car) {
@@ -73,6 +94,20 @@ public class CarDatabaseHelper extends SQLiteOpenHelper {
         db.insert(TABLE_CARS, null, values);
         db.close();
     }
+
+    public void insertTrip(Trip trip) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("car_id", trip.carId);
+        values.put("date", trip.date);
+        values.put("distance", trip.distance);
+        values.put("volume", trip.volume);
+        values.put("cost", trip.cost);
+        db.insert("trips", null, values);
+        db.close();
+    }
+
+
 
     public List<Car> getAllCars() {
         List<Car> carList = new ArrayList<>();
