@@ -8,13 +8,14 @@
     android:padding="16dp"
     android:fitsSystemWindows="true">
 
+
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Select Mode"
         android:textAppearance="?attr/textAppearanceSubtitle1"
         android:textStyle="bold"
-        android:paddingBottom="12dp"
+        android:paddingTop="32dp"
         android:textColor="#000000"/>
 
     <!-- MENU ITEM: HOME -->
