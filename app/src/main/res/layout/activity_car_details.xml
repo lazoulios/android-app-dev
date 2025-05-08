@@ -17,17 +17,12 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="#FFF1F5FF"
-            app:navigationIcon="@drawable/ic_menu"
-            app:navigationIconTint="@color/black">
+            app:title="Car Details"
+            app:titleTextColor="@android:color/black"
+            app:titleCentered="true"
+            app:navigationIcon="@drawable/ic_back2"
+            app:navigationIconTint="@color/black" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Car Details"
-                android:textColor="@android:color/black"
-                android:textSize="20sp"
-                android:layout_gravity="center" />
-        </com.google.android.material.appbar.MaterialToolbar>
 
         <!-- Car Detail Content -->
         <ScrollView
