@@ -14,13 +14,14 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="?attr/actionBarSize"
             android:background="#FFF1F5FF"
-            app:navigationIcon="@drawable/ic_menu"
-            android:theme="@style/ThemeOverlay.Material3.Dark.ActionBar"
             app:title="Car App"
             app:titleTextColor="@android:color/black"
-            app:titleCentered="true" />
+            app:titleCentered="true"
+            app:navigationIcon="@drawable/ic_menu"
+            app:navigationIconTint="@android:color/black" />
+
 
         <!-- RecyclerView for loading cars -->
         <androidx.recyclerview.widget.RecyclerView
