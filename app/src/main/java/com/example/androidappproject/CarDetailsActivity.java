@@ -1,8 +1,11 @@
 package com.example.androidappproject;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -47,6 +50,22 @@ public class CarDetailsActivity extends AppCompatActivity {
             Log.d("CarDetails", "Received name: " + extras.getString("name"));
         }
 
+        Button deleteButton = findViewById(R.id.buttonDeleteCar);
+
+        deleteButton.setOnClickListener(v -> {
+            CarDatabaseHelper dbHelper = new CarDatabaseHelper(this);
+            String name = getIntent().getStringExtra("name");
+
+            boolean deleted = dbHelper.deleteCarByName(name); // or use a unique ID if you have one
+
+            if (deleted) {
+                Toast.makeText(this, "Car deleted", Toast.LENGTH_SHORT).show();
+                finish(); // go back to previous screen
+            } else {
+                Toast.makeText(this, "Failed to delete car", Toast.LENGTH_SHORT).show();
+            }
+
+        });
     }
 }
 

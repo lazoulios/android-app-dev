@@ -136,4 +136,10 @@ public class CarDatabaseHelper extends SQLiteOpenHelper {
         return carList;
     }
 
+    public boolean deleteCarByName(String name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int rows = db.delete("cars", "name = ?", new String[]{name});
+        return rows > 0;
+    }
+
 }
