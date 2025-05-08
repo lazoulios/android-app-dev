@@ -14,12 +14,13 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="wrap_content"
             android:background="#FFF1F5FF"
-            android:title="@string/add_car"
-            app:titleCentered="true"
-            app:titleTextColor="@color/black"
-            app:navigationIcon="@drawable/ic_menu" />
+            app:navigationIcon="@drawable/ic_menu"
+            android:theme="@style/ThemeOverlay.Material3.Dark.ActionBar"
+            app:title="Car App"
+            app:titleTextColor="@android:color/black"
+            app:titleCentered="true" />
 
         <!-- Confirm FAB -->
         <ScrollView
