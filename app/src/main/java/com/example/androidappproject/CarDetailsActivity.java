@@ -36,7 +36,7 @@ public class CarDetailsActivity extends AppCompatActivity {
             carDescription.setText(extras.getString("description"));
             carMake.setText(extras.getString("make"));
             carModel.setText(extras.getString("model"));
-            carEngine.setText(String.valueOf(extras.getInt("engine")) + " cc");
+            carEngine.setText(String.valueOf(extras.getInt("engine")) + "cc");
             carGas.setText(extras.getString("gasType"));
             carDistance.setText(extras.getString("distanceUnit"));
             carVolume.setText(extras.getString("volumeUnit"));

@@ -31,67 +31,184 @@
             android:layout_marginTop="?attr/actionBarSize"
             android:padding="16dp">
 
-            <LinearLayout
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView android:id="@+id/textCarName"
-                    android:layout_width="wrap_content"
+                android:layout_margin="16dp"
+                android:padding="16dp"
+                app:cardElevation="4dp"
+                app:cardCornerRadius="12dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Car Name"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="16dp"/>
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-                <TextView android:id="@+id/textCarDescription"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Description"
-                    android:layout_marginTop="8dp"/>
+                    <TextView android:id="@+id/textCarName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Car Name"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="8dp"/>
 
-                <TextView android:id="@+id/textCarMake"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Make"
-                    android:layout_marginTop="8dp"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#22000000"
+                        android:layout_marginBottom="12dp" />
 
-                <TextView android:id="@+id/textCarModel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Model"
-                    android:layout_marginTop="8dp"/>
+                    <TextView android:id="@+id/textCarDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Description"
+                        android:textSize="15sp"
+                        android:textColor="#444444"
+                        android:layout_marginBottom="12dp"/>
 
-                <TextView android:id="@+id/textCarEngine"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Engine"
-                    android:layout_marginTop="8dp"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#22000000"
+                        android:layout_marginBottom="16dp" />
 
-                <TextView android:id="@+id/textCarGas"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Gas Type"
-                    android:layout_marginTop="8dp"/>
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:stretchColumns="1"
+                        android:layout_marginTop="16dp">
 
-                <TextView android:id="@+id/textCarDistance"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Distance Unit"
-                    android:layout_marginTop="8dp"/>
+                        <TableRow>
+                            <TextView
+                                android:text="Make:"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:textColor="#333333"
+                                android:layout_marginBottom="4dp" />
+                            <TextView
+                                android:id="@+id/textCarMake"
+                                android:text="Seat"
+                                android:textSize="18sp"
+                                android:textColor="#000000"
+                                android:layout_marginBottom="4dp"
+                                android:textAlignment="textEnd"/>
+                        </TableRow>
 
-                <TextView android:id="@+id/textCarVolume"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Volume Unit"
-                    android:layout_marginTop="8dp"/>
+                        <View style="@style/Divider"/>
 
-                <TextView android:id="@+id/textCarConsumption"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Consumption Unit"
-                    android:layout_marginTop="8dp"/>
-            </LinearLayout>
+                        <TableRow>
+                            <TextView
+                                android:text="Model:"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:textColor="#333333"
+                                android:layout_marginBottom="4dp"/>
+                            <TextView
+                                android:id="@+id/textCarModel"
+                                android:text="Cordoba"
+                                android:textSize="18sp"
+                                android:textColor="#000000"
+                                android:layout_marginBottom="4dp"
+                                android:textAlignment="textEnd"/>
+                        </TableRow>
+
+                        <View style="@style/Divider"/>
+
+                        <!-- Engine -->
+                        <TableRow>
+                            <TextView
+                                android:text="Engine:"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:layout_marginBottom="4dp"
+                                android:textColor="#333333" />
+                            <TextView
+                                android:id="@+id/textCarEngine"
+                                android:text="1400 cc"
+                                android:textSize="18sp"
+                                android:layout_marginBottom="4dp"
+                                android:textColor="#000000"
+                                android:textAlignment="textEnd"/>
+                        </TableRow>
+
+                        <View style="@style/Divider"/>
+
+                        <!-- Gas Type -->
+                        <TableRow>
+                            <TextView
+                                android:text="Fuel:"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:layout_marginBottom="4dp"
+                                android:textColor="#333333" />
+                            <TextView
+                                android:id="@+id/textCarGas"
+                                android:text="Gasoline"
+                                android:textSize="18sp"
+                                android:layout_marginBottom="4dp"
+                                android:textColor="#000000"
+                                android:textAlignment="textEnd"/>
+                        </TableRow>
+
+                        <View style="@style/Divider"/>
+
+                        <!-- Distance Unit -->
+                        <TableRow>
+                            <TextView
+                                android:text="Distance Unit:"
+                                android:layout_marginBottom="4dp"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:textColor="#333333" />
+                            <TextView
+                                android:id="@+id/textCarDistance"
+                                android:text="Kilometers"
+                                android:textSize="18sp"
+                                android:layout_marginBottom="4dp"
+                                android:textColor="#000000"
+                                android:textAlignment="textEnd"/>
+                        </TableRow>
+
+                        <View style="@style/Divider"/>
+
+                        <!-- Volume Unit -->
+                        <TableRow>
+                            <TextView
+                                android:text="Volume Unit:"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:layout_marginBottom="4dp"
+                                android:textColor="#333333" />
+                            <TextView
+                                android:id="@+id/textCarVolume"
+                                android:text="Liters"
+                                android:textSize="18sp"
+                                android:textColor="#000000"
+                                android:layout_marginBottom="4dp"
+                                android:textAlignment="textEnd"/>
+                        </TableRow>
+
+                        <View style="@style/Divider"/>
+
+                        <!-- Consumption Unit -->
+                        <TableRow>
+                            <TextView
+                                android:text="Consumption:"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                android:layout_marginBottom="4dp"
+                                android:textColor="#333333" />
+                            <TextView
+                                android:id="@+id/textCarConsumption"
+                                android:text="L/100km"
+                                android:textSize="18sp"
+                                android:textColor="#000000"
+                                android:layout_marginBottom="4dp"
+                                android:textAlignment="textEnd"/>
+                        </TableRow>
+                    </TableLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
         </ScrollView>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

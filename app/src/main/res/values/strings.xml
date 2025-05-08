@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Android App Project</string>
+    <string name="app_name">Car Buddy</string>
     <string name="save_car">Save Car</string>
     <string name="car_name_hint">Car Name</string>
     <string name="description_hint">Description</string>
