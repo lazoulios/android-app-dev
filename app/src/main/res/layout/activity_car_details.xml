@@ -1,74 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.drawerlayout.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:padding="16dp"
+    android:id="@+id/details_drawer"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/details_toolbar"
+    <!-- Main Content -->
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:title="Car Details"
-        android:titleTextColor="@android:color/white"
-        app:navigationIcon="@drawable/ic_menu" />
+        android:layout_height="match_parent">
 
-    <TextView android:id="@+id/textCarName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Car Name"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp"/>
+        <!-- Top App Bar -->
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/details_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#FFF1F5FF"
+            app:navigationIcon="@drawable/ic_menu"
+            app:navigationIconTint="@color/black">
 
-    <TextView android:id="@+id/textCarDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Description"
-        android:layout_marginTop="8dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Car Details"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:layout_gravity="center" />
+        </com.google.android.material.appbar.MaterialToolbar>
 
-    <TextView android:id="@+id/textCarMake"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Make"
-        android:layout_marginTop="8dp"/>
+        <!-- Car Detail Content -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:padding="16dp">
 
-    <TextView android:id="@+id/textCarModel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Model"
-        android:layout_marginTop="8dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-    <TextView android:id="@+id/textCarEngine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Engine"
-        android:layout_marginTop="8dp"/>
+                <TextView android:id="@+id/textCarName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Car Name"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="16dp"/>
 
-    <TextView android:id="@+id/textCarGas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Gas Type"
-        android:layout_marginTop="8dp"/>
+                <TextView android:id="@+id/textCarDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Description"
+                    android:layout_marginTop="8dp"/>
 
-    <TextView android:id="@+id/textCarDistance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Distance Unit"
-        android:layout_marginTop="8dp"/>
+                <TextView android:id="@+id/textCarMake"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Make"
+                    android:layout_marginTop="8dp"/>
 
-    <TextView android:id="@+id/textCarVolume"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Volume Unit"
-        android:layout_marginTop="8dp"/>
+                <TextView android:id="@+id/textCarModel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Model"
+                    android:layout_marginTop="8dp"/>
 
-    <TextView android:id="@+id/textCarConsumption"
+                <TextView android:id="@+id/textCarEngine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Engine"
+                    android:layout_marginTop="8dp"/>
+
+                <TextView android:id="@+id/textCarGas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gas Type"
+                    android:layout_marginTop="8dp"/>
+
+                <TextView android:id="@+id/textCarDistance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Distance Unit"
+                    android:layout_marginTop="8dp"/>
+
+                <TextView android:id="@+id/textCarVolume"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Volume Unit"
+                    android:layout_marginTop="8dp"/>
+
+                <TextView android:id="@+id/textCarConsumption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Consumption Unit"
+                    android:layout_marginTop="8dp"/>
+            </LinearLayout>
+        </ScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <!-- Optional: if you want a navigation drawer here -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Consumption Unit"
-        android:layout_marginTop="8dp"/>
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@android:color/white"
+        android:fitsSystemWindows="true">
+
+
+        <include layout="@layout/custom_drawer_content" />
+
+    </com.google.android.material.navigation.NavigationView>
+</androidx.drawerlayout.widget.DrawerLayout>

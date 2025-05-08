@@ -2,6 +2,7 @@ package com.example.androidappproject;
 
 import android.os.Bundle;
 import android.widget.TextView;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -41,5 +42,12 @@ public class CarDetailsActivity extends AppCompatActivity {
             carVolume.setText(extras.getString("volumeUnit"));
             carConsumption.setText(extras.getString("consumptionUnit"));
         }
+
+        if (extras != null) {
+            Log.d("CarDetails", "Received name: " + extras.getString("name"));
+        }
+
     }
 }
+
+
