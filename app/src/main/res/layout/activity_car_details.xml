@@ -231,6 +231,15 @@
 
             </LinearLayout>
         </ScrollView>
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/add_trip_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Trip"
+            app:icon="@drawable/ic_add"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            app:backgroundTint="#F1F0FF" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <!-- Optional: if you want a navigation drawer here -->

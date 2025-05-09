@@ -135,11 +135,16 @@ public class AddCarActivity extends AppCompatActivity {
             String consumptionUnit = spinnerConsumptionUnit.getSelectedItem().toString();
 
             // Create Car object
-            Car newCar = new Car(carName, description, make, model, engineDisplacement,
-                    gasType, distanceUnit, volumeUnit, consumptionUnit);
+            Car car = new Car(
+                    0, // ID will be set after insert
+                    carName, description, make, model, engineDisplacement, gasType, distanceUnit, volumeUnit, consumptionUnit
+            );
 
-            // Insert into database
-            dbHelper.insertCar(newCar);
+            CarDatabaseHelper dbHelper = new CarDatabaseHelper(this);
+            long carId = dbHelper.insertCar(car);
+
+            // Optional: update the car object if needed
+            car.id = (int) carId;
 
             Toast.makeText(this, "Car Saved!", Toast.LENGTH_SHORT).show();
             finish();  // Close the activity after saving
