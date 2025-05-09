@@ -78,7 +78,7 @@ public class CarDatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public void insertCar(Car car) {
+    public long insertCar(Car car) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, car.name);
@@ -91,19 +91,21 @@ public class CarDatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_VOLUME_UNIT, car.volumeUnit);
         values.put(COLUMN_CONSUMPTION_UNIT, car.consumptionUnit);
 
-        db.insert(TABLE_CARS, null, values);
+        long id = db.insert(TABLE_CARS, null, values);
         db.close();
+        return id;
     }
+
 
     public void insertTrip(Trip trip) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("car_id", trip.carId);
-        values.put("date", trip.date);
-        values.put("distance", trip.distance);
-        values.put("volume", trip.volume);
-        values.put("cost", trip.cost);
-        db.insert("trips", null, values);
+        values.put(COLUMN_CAR_ID, trip.carId);
+        values.put(COLUMN_DATE, trip.date);
+        values.put(COLUMN_DISTANCE, trip.distance);
+        values.put(COLUMN_VOLUME, trip.volume);
+        values.put(COLUMN_COST, trip.cost);
+        db.insert(TABLE_TRIPS, null, values);
         db.close();
     }
 
@@ -116,6 +118,7 @@ public class CarDatabaseHelper extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             do {
+                int id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID));
                 String name = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME));
                 String description = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DESCRIPTION));
                 String make = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_MAKE));
@@ -126,7 +129,7 @@ public class CarDatabaseHelper extends SQLiteOpenHelper {
                 String volumeUnit = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_VOLUME_UNIT));
                 String consumptionUnit = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CONSUMPTION_UNIT));
 
-                Car car = new Car(name, description, make, model, engine, gasType, distanceUnit, volumeUnit, consumptionUnit);
+                Car car = new Car(id, name, description, make, model, engine, gasType, distanceUnit, volumeUnit, consumptionUnit);
                 carList.add(car);
             } while (cursor.moveToNext());
         }

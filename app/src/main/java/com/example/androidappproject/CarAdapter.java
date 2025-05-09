@@ -33,6 +33,7 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
         holder.itemView.setOnClickListener(v -> {
             Context context = v.getContext();
             Intent intent = new Intent(context, CarDetailsActivity.class);
+            intent.putExtra("car_id", car.id);
             intent.putExtra("name", car.name);
             intent.putExtra("description", car.description);
             intent.putExtra("make", car.make);

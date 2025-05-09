@@ -24,6 +24,7 @@
         <activity android:name=".AddCarActivity" />
         <activity android:name=".ComparisonsActivity" />
         <activity android:name=".CarDetailsActivity" />
+        <activity android:name=".AddTripActivity" />
     </application>
 
 </manifest>
