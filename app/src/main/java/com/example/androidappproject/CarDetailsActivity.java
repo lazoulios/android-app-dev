@@ -2,6 +2,7 @@ package com.example.androidappproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.util.Log;
 import android.widget.Button;
@@ -25,6 +26,30 @@ public class CarDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_details);
+        ExtendedFloatingActionButton buttonEditCar = findViewById(R.id.buttonEditCar);
+        buttonEditCar.setOnClickListener(v -> {
+            Intent intent = new Intent(CarDetailsActivity.this, EditCarActivity.class);
+
+            // Στείλε όλα τα απαραίτητα δεδομένα
+            intent.putExtra("car_id", carId);
+            intent.putExtra("name", carName.getText().toString());
+            intent.putExtra("description", carDescription.getText().toString());
+            intent.putExtra("make", carMake.getText().toString());
+            intent.putExtra("model", carModel.getText().toString());
+
+            // Αφαίρεσε το "cc" από το engine (αν υπάρχει)
+            String engineText = carEngine.getText().toString().replace("cc", "").trim();
+            int engineValue = engineText.isEmpty() ? 0 : Integer.parseInt(engineText);
+            intent.putExtra("engine", engineValue);
+
+            intent.putExtra("gasType", carGas.getText().toString());
+            intent.putExtra("distanceUnit", carDistance.getText().toString());
+            intent.putExtra("volumeUnit", carVolume.getText().toString());
+            intent.putExtra("consumptionUnit", carConsumption.getText().toString());
+
+            startActivity(intent);
+        });
+
 
         MaterialToolbar toolbar = findViewById(R.id.details_toolbar);
         setSupportActionBar(toolbar);
@@ -98,7 +123,64 @@ public class CarDetailsActivity extends AppCompatActivity {
                 startActivity(intent);
             });
         }
+
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1001 && resultCode == RESULT_OK) {
+            reloadCarDetails();  // Ανανεώνει τα στοιχεία του αυτοκινήτου
+        }
+    }
+    private void reloadCarDetails() {
+        dbHelper = new CarDatabaseHelper(this);
+        Car car = null;
+        for (Car c : dbHelper.getAllCars()) {
+            if (c.id == carId) {
+                car = c;
+                break;
+            }
+        }
+        if (car != null) {
+            carName.setText(car.name);
+            carDescription.setText(car.description);
+            carMake.setText(car.make);
+            carModel.setText(car.model);
+            carEngine.setText(car.engineDisplacement + "cc");
+            carGas.setText(car.gasType);
+            carDistance.setText(car.distanceUnit);
+            carVolume.setText(car.volumeUnit);
+            carConsumption.setText(car.consumptionUnit);
+        }
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // Φόρτωσε ξανά το αυτοκίνητο από τη βάση
+        dbHelper = new CarDatabaseHelper(this);
+        Car car = null;
+        for (Car c : dbHelper.getAllCars()) {
+            if (c.id == carId) {
+                car = c;
+                break;
+            }
+        }
+
+        if (car != null) {
+            carName.setText(car.name);
+            carDescription.setText(car.description);
+            carMake.setText(car.make);
+            carModel.setText(car.model);
+            carEngine.setText(car.engineDisplacement + "cc");
+            carGas.setText(car.gasType);
+            carDistance.setText(car.distanceUnit);
+            carVolume.setText(car.volumeUnit);
+            carConsumption.setText(car.consumptionUnit);
+        }
+    }
+
+
 }
 
 

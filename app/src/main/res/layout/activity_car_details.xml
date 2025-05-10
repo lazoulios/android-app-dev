@@ -29,9 +29,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="?attr/actionBarSize"
-            android:padding="16dp">
+            android:paddingTop="16dp"
+            android:paddingBottom="80dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:clipToPadding="false">
 
-            <LinearLayout
+
+        <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -216,20 +221,36 @@
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="73dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="80dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
                 <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                     android:id="@+id/buttonDeleteCar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
                     android:text="DELETE"
-                    android:layout_gravity="bottom|start"
-                    android:layout_margin="24dp"
+                    android:textColor="@android:color/black"
                     android:textSize="15sp"
                     android:textStyle="bold"
-                    app:backgroundTint="#FFDCE6"
-                    android:textColor="@android:color/black" />
+                    app:backgroundTint="#FFDCE6" />
 
-
+                <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                    android:id="@+id/buttonEditCar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="EDIT"
+                    android:textColor="@android:color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="#CFE9FF" />
             </LinearLayout>
+        </LinearLayout>
         </ScrollView>
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/add_trip_button"

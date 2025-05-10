@@ -12,6 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidAppProject"
         tools:targetApi="31">
+        <activity android:name=".EditCarActivity" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

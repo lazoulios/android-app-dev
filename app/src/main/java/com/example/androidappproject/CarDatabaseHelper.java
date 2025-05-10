@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.ContentValues;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -144,5 +145,19 @@ public class CarDatabaseHelper extends SQLiteOpenHelper {
         int rows = db.delete("cars", "name = ?", new String[]{name});
         return rows > 0;
     }
+    public boolean updateCar(int carId, ContentValues values) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Log.d("DB", "Trying to update car ID = " + carId);
+        int rows = db.update("cars", values, "_id = ?", new String[]{String.valueOf(carId)});
+        Log.d("DB", "Update affected rows = " + rows);
+        db.close();
+        return rows > 0;
+    }
+
+
+
+
+
 
 }
