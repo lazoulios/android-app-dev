@@ -221,7 +221,6 @@
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-<<<<<<< Updated upstream
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="73dp"
@@ -229,9 +228,7 @@
                 android:layout_marginBottom="80dp"
                 android:gravity="center"
                 android:orientation="horizontal">
-=======
                 <!-- TODO: Add edit button -->
->>>>>>> Stashed changes
 
                 <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                     android:id="@+id/buttonDeleteCar"
@@ -242,7 +239,6 @@
                     android:textColor="@android:color/black"
                     android:textSize="15sp"
                     android:textStyle="bold"
-<<<<<<< Updated upstream
                     app:backgroundTint="#FFDCE6" />
 
                 <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
@@ -254,10 +250,6 @@
                     android:textSize="15sp"
                     android:textStyle="bold"
                     app:backgroundTint="#CFE9FF" />
-=======
-                    app:backgroundTint="#FFDCE6"
-                    android:textColor="@android:color/black" />
->>>>>>> Stashed changes
             </LinearLayout>
         </LinearLayout>
         </ScrollView>
