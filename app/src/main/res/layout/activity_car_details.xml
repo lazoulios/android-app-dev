@@ -253,6 +253,17 @@
             </LinearLayout>
         </LinearLayout>
         </ScrollView>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/view_trips_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View Trips"
+            android:layout_gravity="bottom|start"
+            android:layout_margin="16dp"
+            app:backgroundTint="#F1F0FF"
+            app:icon="@drawable/ic_view_trips" />
+
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/add_trip_button"
             android:layout_width="wrap_content"
@@ -262,7 +273,12 @@
             android:layout_gravity="bottom|end"
             android:layout_margin="16dp"
             app:backgroundTint="#F1F0FF" />
+
+
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
 
     <!-- Optional: if you want a navigation drawer here -->
     <com.google.android.material.navigation.NavigationView

@@ -155,6 +155,44 @@ public class CarDatabaseHelper extends SQLiteOpenHelper {
         return rows > 0;
     }
 
+    public List<Trip> getTripsForCar(int carId) {
+        List<Trip> trips = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query("trips", null, "car_id=?", new String[]{String.valueOf(carId)}, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                String date = cursor.getString(cursor.getColumnIndexOrThrow("date"));
+                double distance = cursor.getDouble(cursor.getColumnIndexOrThrow("distance"));
+                double volume = cursor.getDouble(cursor.getColumnIndexOrThrow("volume"));
+                double cost = cursor.getDouble(cursor.getColumnIndexOrThrow("cost"));
+
+                Trip trip = new Trip(carId, date, distance, volume, cost);
+                trips.add(trip);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return trips;
+    }
+
+    public boolean deleteTrip(Trip trip) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        int rows = db.delete("trips",
+                "car_id = ? AND date = ? AND distance = ? AND volume = ?",
+                new String[] {
+                        String.valueOf(trip.carId),
+                        trip.date,
+                        String.valueOf(trip.distance),
+                        String.valueOf(trip.volume)
+                });
+
+        db.close();
+        return rows > 0;
+    }
+
 
 
 

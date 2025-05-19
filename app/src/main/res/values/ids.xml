@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="edit_gas_type_spinner" type="id" />
+    <item name="edit_distance_unit_spinner" type="id" />
+    <item name="edit_volume_unit_spinner" type="id" />
+    <item name="edit_consumption_unit_spinner" type="id" />
+</resources>

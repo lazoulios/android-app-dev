@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/view_trips_drawer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <!-- Main content -->
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Top App Bar -->
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/trips_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#FFF1F5FF"
+            android:title="Trip History"
+            android:titleTextColor="@android:color/black"
+            app:navigationIcon="@drawable/ic_back2"
+            app:navigationIconTint="@android:color/black" />
+
+        <!-- RecyclerView Content -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewTrips"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:padding="16dp"/>
+
+        <TextView
+            android:id="@+id/empty_trips_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No Trips Added"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <!-- Optional Drawer Menu -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@android:color/white"
+        android:fitsSystemWindows="true">
+
+        <include layout="@layout/custom_drawer_content" />
+    </com.google.android.material.navigation.NavigationView>
+
+</androidx.drawerlayout.widget.DrawerLayout>

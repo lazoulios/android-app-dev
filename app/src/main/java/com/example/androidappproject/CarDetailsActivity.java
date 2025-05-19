@@ -18,6 +18,7 @@ public class CarDetailsActivity extends AppCompatActivity {
 
     private int carId;
     private CarDatabaseHelper dbHelper;
+    private ExtendedFloatingActionButton viewTripsButton;
     private ExtendedFloatingActionButton addTripButton;
     private TextView carName, carDescription, carMake, carModel, carEngine, carGas, carDistance, carVolume, carConsumption;
 
@@ -73,6 +74,7 @@ public class CarDetailsActivity extends AppCompatActivity {
         carConsumption = findViewById(R.id.textCarConsumption);
 
         addTripButton = findViewById(R.id.add_trip_button);
+        viewTripsButton = findViewById(R.id.view_trips_button);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -116,9 +118,16 @@ public class CarDetailsActivity extends AppCompatActivity {
                 }
 
             });
+
             // Handle Add Trip
             addTripButton.setOnClickListener(v -> {
                 Intent intent = new Intent(CarDetailsActivity.this, AddTripActivity.class);
+                intent.putExtra("car_id", carId);
+                startActivity(intent);
+            });
+
+            viewTripsButton.setOnClickListener(v -> {
+                Intent intent = new Intent(CarDetailsActivity.this, ViewTripsActivity.class);
                 intent.putExtra("car_id", carId);
                 startActivity(intent);
             });
