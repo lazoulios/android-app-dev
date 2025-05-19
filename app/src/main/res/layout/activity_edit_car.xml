@@ -26,57 +26,57 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="16dp" />
 
         <EditText
             android:id="@+id/edit_description"
             android:hint="Description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"/>
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/edit_make"
             android:hint="Make"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/edit_model"
             android:hint="Model"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/edit_engine"
             android:hint="Engine (cc)"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"/>
+            android:inputType="number" />
 
-        <EditText
-            android:id="@+id/edit_gas_type"
-            android:hint="Gas Type"
+        <Spinner
+            android:id="@+id/edit_gas_type_spinner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"/>
 
-        <EditText
-            android:id="@+id/edit_distance_unit"
-            android:hint="Distance Unit"
+        <Spinner
+            android:id="@+id/edit_distance_unit_spinner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"/>
 
-        <EditText
-            android:id="@+id/edit_volume_unit"
-            android:hint="Volume Unit"
+        <Spinner
+            android:id="@+id/edit_volume_unit_spinner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"/>
 
-        <EditText
-            android:id="@+id/edit_consumption_unit"
-            android:hint="Consumption Unit"
+        <Spinner
+            android:id="@+id/edit_consumption_unit_spinner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"/>
 
         <Button
             android:id="@+id/button_save_car"
@@ -85,6 +85,7 @@
             android:text="Save"
             android:layout_marginTop="24dp"
             android:backgroundTint="#CFE9FF"
-            android:textColor="@android:color/black"/>
+            android:textColor="@android:color/black" />
+
     </LinearLayout>
 </ScrollView>
