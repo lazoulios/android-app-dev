@@ -123,6 +123,12 @@ public class CarDetailsActivity extends AppCompatActivity {
             addTripButton.setOnClickListener(v -> {
                 Intent intent = new Intent(CarDetailsActivity.this, AddTripActivity.class);
                 intent.putExtra("car_id", carId);
+                String carDist = carDistance.getText().toString();
+                carDist = " " + carDist;
+                String carVol = carVolume.getText().toString();
+                carVol = " " + carVol;
+                intent.putExtra("distanceUnit", carDist);
+                intent.putExtra("volumeUnit", carVol);
                 startActivity(intent);
             });
 
