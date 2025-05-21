@@ -50,8 +50,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewCars = findViewById(R.id.recyclerViewCars);
         ExtendedFloatingActionButton addCarButton = findViewById(R.id.add_car_button);
 
-        // ✅ ΟΡΙΣΜΟΣ ΤΙΤΛΟΥ ΠΡΙΝ ΤΗΝ setSupportActionBar
-        toolbar.setTitle("Car App");
+        toolbar.setTitle("Car Buddy");
         setSupportActionBar(toolbar);
 
         // Setup Drawer Toggle
@@ -87,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         navCompare.setOnClickListener(v -> {
             drawerLayout.closeDrawers();
             Toast.makeText(MainActivity.this, "Compare selected", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(MainActivity.this, ComparisonsActivity.class));
+            startActivity(new Intent(MainActivity.this, CompareActivity.class));
         });
 
         addCarButton.setOnClickListener(v -> {

@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".AddCarActivity" />
-        <activity android:name=".ComparisonsActivity" />
+        <activity android:name=".CompareActivity" />
         <activity android:name=".CarDetailsActivity" />
         <activity android:name=".AddTripActivity" />
         <activity android:name=".ViewTripsActivity" />

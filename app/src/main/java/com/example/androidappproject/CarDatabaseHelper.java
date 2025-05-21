@@ -201,9 +201,32 @@ public class CarDatabaseHelper extends SQLiteOpenHelper {
         return rows > 0;
     }
 
+    public double getAverageConsumptionForCar(int carId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String unit = "L/100km"; // default fallback
+        Cursor unitCursor = db.rawQuery("SELECT consumption_unit FROM cars WHERE _id = ?", new String[]{String.valueOf(carId)});
+        if (unitCursor.moveToFirst()) {
+            unit = unitCursor.getString(0);
+        }
+        unitCursor.close();
 
+        Cursor cursor = db.rawQuery("SELECT SUM(distance), SUM(volume) FROM trips WHERE car_id = ?", new String[]{String.valueOf(carId)});
+        double avg = 0;
 
+        if (cursor.moveToFirst()) {
+            double totalDistance = cursor.getDouble(0);
+            double totalVolume = cursor.getDouble(1);
+            if (totalDistance > 0 && totalVolume > 0) {
+                if (unit.equalsIgnoreCase("mpg")) {
+                    avg = totalDistance / totalVolume; // miles / gallons
+                } else {
+                    avg = totalVolume / (totalDistance / 100.0); // liters/100km
+                }
+            }
+        }
 
-
-
+        cursor.close();
+        db.close();
+        return avg;
+    }
 }

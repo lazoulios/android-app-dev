@@ -101,15 +101,13 @@
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/saveCarButton"
-            android:layout_width="63dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Save Car"
+            app:icon="@drawable/ic_check"
             android:layout_gravity="bottom|end"
             android:layout_margin="16dp"
-            android:backgroundTint="#FFF1F5FF"
-            android:icon="@drawable/ic_check"
-            android:contentDescription="@string/save_car"
-            android:titleTextColor="@color/black"
-            app:iconTint="@color/black"/>
+            app:backgroundTint="#F1F0FF" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
