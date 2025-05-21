@@ -17,6 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:background="#FFF1F5FF"
         android:padding="16dp">
         <TextView
             android:id="@+id/car_name"
