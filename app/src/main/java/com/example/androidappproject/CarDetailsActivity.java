@@ -106,17 +106,15 @@ public class CarDetailsActivity extends AppCompatActivity {
 
             deleteButton.setOnClickListener(v -> {
                 CarDatabaseHelper dbHelper = new CarDatabaseHelper(this);
-                String name = getIntent().getStringExtra("name");
 
-                boolean deleted = dbHelper.deleteCarByName(name); // or use a unique ID if you have one
+                boolean deleted = dbHelper.deleteCarById(carId);  // χρησιμοποιεί το μοναδικό ID
 
                 if (deleted) {
                     Toast.makeText(this, "Car deleted", Toast.LENGTH_SHORT).show();
-                    finish(); // go back to previous screen
+                    finish(); // επιστροφή στην προηγούμενη οθόνη
                 } else {
                     Toast.makeText(this, "Failed to delete car", Toast.LENGTH_SHORT).show();
                 }
-
             });
 
             // Handle Add Trip

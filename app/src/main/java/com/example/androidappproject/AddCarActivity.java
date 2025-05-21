@@ -39,47 +39,14 @@ public class AddCarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_car_screen);
 
-        // Find views
-        drawerLayout = findViewById(R.id.drawer_layout);
-        toolbar = findViewById(R.id.toolbar);
-        navView = findViewById(R.id.nav_view);
-
+        MaterialToolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        // Setup hamburger toggle
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawerLayout, toolbar,
-                R.string.navigation_drawer_open,
-                R.string.navigation_drawer_close
-        );
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-
-        // Find custom drawer buttons
-        navHome = findViewById(R.id.nav_home);
-        navAddCar = findViewById(R.id.nav_add_car);
-        navCompare = findViewById(R.id.nav_compare);
-
-        // Handle Drawer Item Clicks
-        navHome.setOnClickListener(v -> {
-            drawerLayout.closeDrawers();
-            Toast.makeText(AddCarActivity.this, "Home selected", Toast.LENGTH_SHORT).show();
+        toolbar.setNavigationOnClickListener(v -> {
+            // Πήγαινε στην αρχική οθόνη (MainActivity)
             Intent intent = new Intent(AddCarActivity.this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
-            finish(); // Optional: close AddCarActivity
-        });
-
-        navAddCar.setOnClickListener(v -> {
-            drawerLayout.closeDrawers();
-            Toast.makeText(AddCarActivity.this, "Already on Add Car", Toast.LENGTH_SHORT).show();
-            // You are already on Add Car, no need to open again
-        });
-
-        navCompare.setOnClickListener(v -> {
-            drawerLayout.closeDrawers();
-            Toast.makeText(AddCarActivity.this, "Compare selected", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(AddCarActivity.this, ComparisonsActivity.class);
-            startActivity(intent);
+            finish();
         });
 
 

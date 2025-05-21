@@ -20,7 +20,7 @@
             app:title="Add Car"
             app:titleTextColor="@android:color/black"
             app:titleCentered="true"
-            app:navigationIcon="@drawable/ic_menu"
+            app:navigationIcon="@drawable/ic_back2"
             app:navigationIconTint="@android:color/black" />
 
         <ScrollView
@@ -112,18 +112,5 @@
             app:iconTint="@color/black"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:background="@android:color/white"
-        android:fitsSystemWindows="true">
-
-
-        <include layout="@layout/custom_drawer_content" />
-
-    </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>
