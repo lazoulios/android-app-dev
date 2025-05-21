@@ -135,6 +135,9 @@ public class CarDetailsActivity extends AppCompatActivity {
             viewTripsButton.setOnClickListener(v -> {
                 Intent intent = new Intent(CarDetailsActivity.this, ViewTripsActivity.class);
                 intent.putExtra("car_id", carId);
+                intent.putExtra("distance_unit", carDistance.getText().toString());
+                intent.putExtra("volume_unit", carVolume.getText().toString());
+                intent.putExtra("consumption_unit", carConsumption.getText().toString());
                 startActivity(intent);
             });
         }

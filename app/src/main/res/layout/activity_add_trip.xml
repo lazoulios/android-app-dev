@@ -16,14 +16,14 @@
 
         <!-- Top AppBar -->
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/add_trip_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#F8F1FF"
+            android:background="#FFF1F5FF"
             android:title="Add Trip"
             app:titleCentered="true"
             app:titleTextColor="@android:color/black"
-            app:navigationIcon="@drawable/ic_menu" />
+            app:navigationIcon="@drawable/ic_back2" />
 
         <!-- Scrollable Form -->
         <ScrollView

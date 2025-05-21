@@ -16,10 +16,18 @@ import java.util.List;
 public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder> {
 
     private List<Trip> trips;
+    private String distanceUnit;
+    private String volumeUnit;
+    private String consumptionUnit;
 
-    public TripAdapter(List<Trip> trips) {
+
+    public TripAdapter(List<Trip> trips, String distanceUnit, String volumeUnit, String consumptionUnit) {
         this.trips = trips;
+        this.distanceUnit = distanceUnit;
+        this.volumeUnit = volumeUnit;
+        this.consumptionUnit = consumptionUnit;
     }
+
 
     @NonNull
     @Override
@@ -32,8 +40,10 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder
     public void onBindViewHolder(@NonNull TripViewHolder holder, int position) {
         Trip trip = trips.get(position);
         holder.date.setText("Date: " + trip.date);
-        holder.distance.setText("Distance: " + trip.distance + " km");
-        holder.volume.setText("Fuel: " + trip.volume + " L");
+        holder.distance.setText("Distance: " + trip.distance + " " + distanceUnit);
+        holder.volume.setText("Fuel: " + trip.volume + " " + volumeUnit);
+        holder.cost.setText("Cost: " + trip.cost + " €");
+
         holder.cost.setText("Cost: " + trip.cost + " €");
 
         holder.deleteButton.setOnClickListener(v -> {

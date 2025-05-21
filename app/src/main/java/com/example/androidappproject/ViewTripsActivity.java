@@ -26,7 +26,6 @@ public class ViewTripsActivity extends AppCompatActivity {
         setContentView(R.layout.view_trips);
 
         MaterialToolbar toolbar = findViewById(R.id.trips_toolbar);
-        setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(v -> finish());
 
         recyclerView = findViewById(R.id.recyclerViewTrips);
@@ -43,7 +42,10 @@ public class ViewTripsActivity extends AppCompatActivity {
 
         dbHelper = new CarDatabaseHelper(this);
         List<Trip> trips = dbHelper.getTripsForCar(carId);
-        adapter = new TripAdapter(trips);
+        String distanceUnit = getIntent().getStringExtra("distance_unit");
+        String volumeUnit = getIntent().getStringExtra("volume_unit");
+        String consumptionUnit = getIntent().getStringExtra("consumption_unit");
+        adapter = new TripAdapter(trips, distanceUnit, volumeUnit, consumptionUnit);
         recyclerView.setAdapter(adapter);
 
         if (trips.isEmpty()) {
@@ -52,7 +54,7 @@ public class ViewTripsActivity extends AppCompatActivity {
         } else {
             emptyMessage.setVisibility(View.GONE);
             recyclerView.setVisibility(View.VISIBLE);
-            adapter = new TripAdapter(trips);
+            adapter = new TripAdapter(trips, distanceUnit, volumeUnit, consumptionUnit);
             recyclerView.setAdapter(adapter);
         }
     }

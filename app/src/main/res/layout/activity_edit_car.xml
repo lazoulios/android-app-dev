@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="#FFF1F5FF"
-            android:title="Edit Car"
+            android:title="Car Details"
             android:titleTextColor="@android:color/black"
             app:navigationIcon="@drawable/ic_back2"
             app:navigationIconTint="@android:color/black" />

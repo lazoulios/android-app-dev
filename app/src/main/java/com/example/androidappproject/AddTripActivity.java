@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.appbar.MaterialToolbar;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -20,6 +22,7 @@ public class AddTripActivity extends AppCompatActivity {
 
     private EditText inputDistance, inputVolume, inputCost, inputDate;
     private int carId;
+    private MaterialToolbar toolbar;
     private final String COST_UNIT = " €";
 
     @Override
@@ -38,6 +41,12 @@ public class AddTripActivity extends AppCompatActivity {
             Toast.makeText(this, "Error: no car selected", Toast.LENGTH_SHORT).show();
             finish();
         }
+
+        MaterialToolbar toolbar = findViewById(R.id.add_trip_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Add Trip"); // <-- to fix issue with the stupid title
+        toolbar.setNavigationOnClickListener(v -> finish());
+
 
         // Prefill current date
         String today = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
@@ -62,12 +71,6 @@ public class AddTripActivity extends AppCompatActivity {
         String DIST_UNIT = getIntent().getStringExtra("distanceUnit");
         String VOL_UNIT = getIntent().getStringExtra("volumeUnit");
 
-
-        // Add unit text watchers
-        addUnitTextWatcher(inputDistance, DIST_UNIT);
-        addUnitTextWatcher(inputVolume, VOL_UNIT);
-        addUnitTextWatcher(inputCost, COST_UNIT);
-
         findViewById(R.id.button_save_trip).setOnClickListener(v -> {
             try {
                 // Remove unit suffixes before parsing
@@ -88,30 +91,6 @@ public class AddTripActivity extends AppCompatActivity {
                 finish();
             } catch (Exception e) {
                 Toast.makeText(this, "Please fill in all fields correctly", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    private void addUnitTextWatcher(EditText editText, String unit) {
-        editText.addTextChangedListener(new TextWatcher() {
-            private boolean isEditing = false;
-
-            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (isEditing) return;
-
-                isEditing = true;
-                String input = s.toString().replace(unit, "").trim();
-
-                if (!input.isEmpty() && !s.toString().endsWith(unit)) {
-                    editText.setText(input + unit);
-                    editText.setSelection(input.length()); // Cursor before unit
-                }
-
-                isEditing = false;
             }
         });
     }

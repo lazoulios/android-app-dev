@@ -20,7 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="#FFF1F5FF"
-                app:title="Car App"
+                app:title="Car Buddy"
                 app:titleTextColor="@android:color/black"
                 app:titleCentered="true"
                 app:navigationIcon="@drawable/ic_menu"
